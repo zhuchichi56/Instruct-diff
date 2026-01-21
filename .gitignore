@@ -2,12 +2,19 @@
 __pycache__/
 *.py[cod]
 *.pyo
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
 
 # Logs
 *.log
 
 # Local runs/output
 runs/
+**/plot/result*/
 
 # Build artifacts
 build/
