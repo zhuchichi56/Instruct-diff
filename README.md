@@ -199,12 +199,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you find this work useful in your research, please consider citing:
 
 ```bibtex
-@inproceedings{su2026instructdiff,
+@article{su2026instructdiff,
   title={InstructDiff: Domain-Adaptive Data Selection via Differential Entropy for Efficient {LLM} Fine-Tuning},
   author={Su, Junyou and Zhu, He and Luo, Xiao and Zhang, Liyu and Zhou, Hong-Yu and Chen, Yun and Li, Peng and Liu, Yang and Chen, Guanhua},
-  booktitle={Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (ACL)},
-  year={2026},
-  organization={Association for Computational Linguistics}
+  year={2026}
 }
 ```
 
