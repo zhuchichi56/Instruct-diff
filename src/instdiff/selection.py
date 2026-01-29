@@ -53,6 +53,7 @@ def compare_models(
                 "input": base_item.get("input", ""),
                 "response": base_item["response"],
                 "prompt": base_item["prompt"],
+                "n_tokens": base_item["response_tokens"],
                 "base_nll": base_item["nll"],
                 "base_avg_entropy": base_item["avg_entropy"],
                 "base_ppl": base_item["ppl"],
@@ -67,6 +68,10 @@ def compare_models(
 
     write_jsonl(combined, output_path)
     return combined
+
+
+def get_total_tokens(data: List[Dict[str, Any]]) -> int:
+    return sum(item["n_tokens"] for item in data)
 
 
 def filter_by_diff_nll(data: List[Dict[str, Any]], reject_ratio: float) -> List[Dict[str, Any]]:
@@ -84,14 +89,22 @@ def filter_by_diff_nll(data: List[Dict[str, Any]], reject_ratio: float) -> List[
 def select_lowest_diff_entropy(
     data: List[Dict[str, Any]],
     select_ratio: float,
+    total_tokens: int,
 ) -> List[Dict[str, Any]]:
     if not data:
         return []
     if select_ratio <= 0 or select_ratio > 1:
         return data
     sorted_data = sorted(data, key=lambda x: x["diff_entropy"])
-    target = max(1, int(len(sorted_data) * select_ratio))
-    return sorted_data[:target]
+    # target = max(1, int(len(sorted_data) * select_ratio))
+    select_tokens = int(total_tokens * select_ratio)
+    selected_data = []
+    for item in sorted_data:
+        selected_data.append(item)
+        if sum(item["n_tokens"] for item in selected_data) >= select_tokens:
+            break
+    # return sorted_data[:target]
+    return selected_data
 
 
 def save_selected_data(selected: List[Dict[str, Any]], output_path: str) -> None:

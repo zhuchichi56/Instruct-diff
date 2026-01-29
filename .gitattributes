@@ -3,3 +3,5 @@ data/numina_cot_100k.jsonl filter=lfs diff=lfs merge=lfs -text
 data/numina_cot_30k.jsonl filter=lfs diff=lfs merge=lfs -text
 data/magpie10k.jsonl filter=lfs diff=lfs merge=lfs -text
 data/numina_cot_10k.jsonl filter=lfs diff=lfs merge=lfs -text
+data/alpaca_cleaned_10k.jsonl filter=lfs diff=lfs merge=lfs -text
+data/magicoder_train_sample_10k.jsonl filter=lfs diff=lfs merge=lfs -text

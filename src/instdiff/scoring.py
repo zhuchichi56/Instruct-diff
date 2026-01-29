@@ -14,6 +14,10 @@ DEFAULT_PROMPT = (
     "### Instruction:\n{instruction}\n\n### Response:"
 )
 
+DIRECT_PROMPT = (
+    "{instruction}"
+)
+
 
 def _compute_metrics(model, tokenizer, prompt: str, target: str) -> Dict[str, float]:
     device = model.device
